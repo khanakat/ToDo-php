@@ -1,0 +1,30 @@
+{
+    "name": "khanakat/todo-php",
+    "description": "ToDo App utilizando PHP y SQL",  
+    "keywords": [
+        "todo",
+        "php",
+        "sql"
+    ],
+    "homepage": "https://github.com/khanakat/ToDo-php",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true,
+        "process-timeout" : 0,
+        "platform": {
+            "php": "7.3.20"
+        }
+    },
+    "autoload": {
+      "psr-4": {
+        "App\\": "src/"
+      }
+    },
+    "scripts": {
+        "database": "php extras/bin/database.php",
+        "start": "php -S localhost:8080 -t public public/index.phtml"        
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.2"
+    }
+}
