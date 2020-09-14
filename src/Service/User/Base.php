@@ -22,7 +22,7 @@ abstract class Base extends BaseService
     protected static function validateUserName(string $name): string
     {
         if (!v::alnum('ÁÉÍÓÚÑáéíóúñ.')->length(1, 100)->validate($name)) {
-            throw new User('Invalid name.', 400);
+            throw new User('Nombre de usuario inválido.', 400);
         }
 
         return $name;
@@ -32,7 +32,7 @@ abstract class Base extends BaseService
     {
         $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
         if (!v::email()->validate($email)) {
-            throw new User('Invalid email', 400);
+            throw new User('Correo inválido.', 400);
         }
 
         return (string) $email;
