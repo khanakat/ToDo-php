@@ -25,6 +25,7 @@
         "start": "php -S localhost:8080 -t public public/index.phtml"        
     },
     "require": {
-        "vlucas/phpdotenv": "^5.2"
+        "vlucas/phpdotenv": "^5.2",
+        "respect/validation": "^1.1"
     }
 }
