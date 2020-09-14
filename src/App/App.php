@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+error_reporting(E_ALL);
+
 require __DIR__ . '/../../vendor/autoload.php';
 $baseDir = __DIR__ . '/../../';
 $dotenv = Dotenv\Dotenv::createImmutable($baseDir);
