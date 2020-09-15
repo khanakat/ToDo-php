@@ -8,20 +8,18 @@ use PDO;
 
 class DbProvider
 {
-    private static $_db;
-
-    public static function get()
+    public static function get(): PDO
     {
-        if (!self::$_db) {
-            $db = __CONFIG__['db'];
-            $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', $db['hostname'], $db['database']);
-            $pdo = new PDO($dsn, $db['username'], $db['password']);
+        try {
+            $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', __CONFIG__['db']['hostname'], __CONFIG__['db']['database']);
+            $pdo = new PDO($dsn, __CONFIG__['db']['username'], __CONFIG__['db']['password']);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
-            self::$_db = $pdo;
+            return $pdo;
+        } catch (\PDOException $ex) {
+            echo "DataBase Error: " . $ex->getMessage();
+        } catch (\Exception $ex) {
+            echo "General Error: " . $ex->getMessage();
         }
-
-        return self::$_db;
     }
 }

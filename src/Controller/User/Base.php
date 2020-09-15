@@ -4,15 +4,21 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
-use App\Controller\BaseController;
 use App\Service\User\Create;
 use App\Service\User\Delete;
 use App\Service\User\Find;
 use App\Service\User\Update;
 use App\Service\User\Login;
 
-abstract class Base extends BaseController
+abstract class Base
 {
+    protected $_userRepository;
+
+    public function __construct()
+    {
+        $this->_userRepository = new \App\Repository\UserRepository();
+    }
+
     protected function getServiceFindUser(): Find
     {
         return new Find($this->_userRepository);

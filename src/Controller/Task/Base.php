@@ -9,10 +9,15 @@ use App\Service\Task\Create;
 use App\Service\Task\Update;
 use App\Service\Task\Delete;
 
-use App\Controller\BaseController;
-
-abstract class Base extends BaseController
+abstract class Base
 {
+    protected $_taskRepository;
+
+    public function __construct()
+    {
+        $this->_taskRepository = new \App\Repository\TaskRepository();
+    }
+
     protected function getServiceFindTask(): Find
     {
         return new Find($this->_taskRepository);

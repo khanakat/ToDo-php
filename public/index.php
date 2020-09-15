@@ -15,7 +15,7 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
             $user->updateEmail($_POST['login_email']);
             $user->updatePassword($_POST['login_password']);
             $logged = new \App\Controller\User\Login($user);
-            $_SESSION['user'] = $logged;
+            //$_SESSION['user'] = $logged;
             var_dump($logged);
         } catch (Exception $ex) {
             echo '<script language="javascript">alert("ERROR: ' . $ex->getMessage() . '")</script>';
