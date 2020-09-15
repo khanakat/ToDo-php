@@ -5,36 +5,31 @@ declare(strict_types=1);
 namespace App\Controller\User;
 
 use App\Controller\BaseController;
-use App\Service\User\Create;
-use App\Service\User\Delete;
-use App\Service\User\Find;
-use App\Service\User\Update;
-use App\Service\User\Login;
 
 abstract class Base extends BaseController
 {
-    protected function getServiceFindUser(): Find
+    protected function getServiceFindUser(): \App\Service\User\Find
     {
-        return $this->container['find_user_service'];
+        return new \App\Service\User\Find($this->_userRepository);
     }
 
-    protected function getServiceCreateUser(): Create
+    protected function getServiceCreateUser(): \App\Service\User\Create
     {
-        return $this->container['create_user_service'];
+        return new \App\Service\User\Create($this->_userRepository);
     }
 
-    protected function getServiceUpdateUser(): Update
+    protected function getServiceUpdateUser(): \App\Service\User\Update
     {
-        return $this->container['update_user_service'];
+        return new \App\Service\User\Update($this->_userRepository);
     }
 
-    protected function getServiceDeleteUser(): Delete
+    protected function getServiceDeleteUser(): \App\Service\User\Delete
     {
-        return $this->container['delete_user_service'];
+        return new \App\Service\User\Delete($this->_userRepository);
     }
 
-    protected function getServiceLoginUser(): Login
+    protected function getServiceLoginUser(): \App\Service\User\Login
     {
-        return $this->container['login_user_service'];
+        return new \App\Service\User\Login($this->_userRepository);
     }
 }

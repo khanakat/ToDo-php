@@ -16,7 +16,7 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
         $note = $statement->fetchObject(\App\Entity\Note::class);
         if (!$note) {
-            throw new Note('Note not found.', 404);
+            throw new Note('Nota no encontrada.', 404);
         }
 
         return $note;
@@ -58,7 +58,7 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
-            $message = 'No notes were found with that name or description.';
+            $message = 'No se encontraron notas con ese nombre o descripción.';
             throw new Note($message, 404);
         }
 

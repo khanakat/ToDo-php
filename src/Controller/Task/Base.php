@@ -5,30 +5,26 @@ declare(strict_types=1);
 namespace App\Controller\Task;
 
 use App\Controller\BaseController;
-use App\Service\Task\Create;
-use App\Service\Task\Delete;
-use App\Service\Task\Find;
-use App\Service\Task\Update;
 
 abstract class Base extends BaseController
 {
-    protected function getServiceFindTask(): Find
+    protected function getServiceFindTask(): \App\Service\Task\Find
     {
-        return $this->container['find_task_service'];
+        return new \App\Service\Task\Find($this->_taskRepository);
     }
 
-    protected function getServiceCreateTask(): Create
+    protected function getServiceCreateTask(): \App\Service\Task\Create
     {
-        return $this->container['create_task_service'];
+        return new \App\Service\Task\Create($this->_taskRepository);
     }
 
-    protected function getServiceUpdateTask(): Update
+    protected function getServiceUpdateTask(): \App\Service\Task\Update
     {
-        return $this->container['update_task_service'];
+        return new \App\Service\Task\Update($this->_taskRepository);
     }
 
-    protected function getServiceDeleteTask(): Delete
+    protected function getServiceDeleteTask(): \App\Service\Task\Delete
     {
-        return $this->container['delete_task_service'];
+        return new \App\Service\Task\Delete($this->_taskRepository);
     }
 }

@@ -5,30 +5,26 @@ declare(strict_types=1);
 namespace App\Controller\Note;
 
 use App\Controller\BaseController;
-use App\Service\Note\Create;
-use App\Service\Note\Delete;
-use App\Service\Note\Find;
-use App\Service\Note\Update;
 
 abstract class Base extends BaseController
 {
-    protected function getServiceFindNote(): Find
+    protected function getServiceFindNote(): \App\Service\Note\Find
     {
-        return $this->container['find_note_service'];
+        return new \App\Service\Note\Find($this->_noteRepository);
     }
 
-    protected function getServiceCreateNote(): Create
+    protected function getServiceCreateNote(): \App\Service\Note\Create
     {
-        return $this->container['create_note_service'];
+        return new \App\Service\Note\Create($this->_noteRepository);
     }
 
-    protected function getServiceUpdateNote(): Update
+    protected function getServiceUpdateNote(): \App\Service\Note\Update
     {
-        return $this->container['update_note_service'];
+        return new \App\Service\Note\Update($this->_noteRepository);
     }
 
-    protected function getServiceDeleteNote(): Delete
+    protected function getServiceDeleteNote(): \App\Service\Note\Delete
     {
-        return $this->container['delete_note_service'];
+        return new \App\Service\Note\Delete($this->_noteRepository);
     }
 }

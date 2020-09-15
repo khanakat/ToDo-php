@@ -16,7 +16,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject(\App\Entity\User::class);
         if (!$user) {
-            throw new User('User not found.', 404);
+            throw new User('Usuario no encontrado.', 404);
         }
 
         return $user;
@@ -30,7 +30,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject();
         if ($user) {
-            throw new User('Email already exists.', 400);
+            throw new User('El Email ya existe.', 400);
         }
     }
 
@@ -57,7 +57,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            throw new User('User name not found.', 404);
+            throw new User('Usuario no encontrado.', 404);
         }
 
         return $users;
@@ -142,7 +142,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject(\App\Entity\User::class);
         if (!$user) {
-            throw new User('Login failed: Email or password incorrect.', 400);
+            throw new User('Error de inicio de sesión: correo electrónico o contraseña incorrecta.', 400);
         }
 
         return $user;

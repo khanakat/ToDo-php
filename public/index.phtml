@@ -4,14 +4,18 @@ declare(strict_types=1);
 
 require __DIR__ . '/../src/App/App.php';
 
-if (isset($_SESSION['user'])) {
+/* if (isset($_SESSION['user'])) {
     header("Location: /perfil");
-}
+} */
 
 if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
     if (!empty($_POST['login_email']) && !empty($_POST['login_password'])) {
         try {
-            //code
+            $user = new \App\Entity\User;
+            $user->updateEmail($_POST['login_email']);
+            $user->updatePassword($_POST['login_password']);
+            $logged = new \App\Controller\User\Login($user);
+            var_dump($logged);
         } catch (Exception $ex) {
             echo '<script language="javascript">alert("ERROR: ' . $ex->getMessage() . '")</script>';
         }

@@ -20,7 +20,7 @@ final class TaskRepository extends BaseRepository
         $statement->execute();
         $task = $statement->fetchObject(\App\Entity\Task::class);
         if (!$task) {
-            throw new Task('Task not found.', 404);
+            throw new Task('Tarea no encontrada.', 404);
         }
 
         return $task;
@@ -86,7 +86,7 @@ final class TaskRepository extends BaseRepository
         $statement->execute();
         $tasks = (array) $statement->fetchAll();
         if (!$tasks) {
-            $message = 'No Tasks were found with that name.';
+            $message = 'No se encontraron tareas con ese nombre.';
             throw new Task($message, 404);
         }
 
