@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
+use App\Entity\Note;
+
 final class Update extends Base
 {
-    public function update(\App\Entity\Note $entity, int $noteId): \App\Entity\Note
+    public function update(Note $entity, int $noteId): Note
     {
         $note = $this->getNoteFromDb($noteId);
         if (!empty($entity->getName())) {

@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
+use App\Entity\User;
+
 final class GetOne extends Base
 {
-    public function __invoke(\App\Entity\User $entity): \App\Entity\User
+    public function __invoke(User $entity): User
     {
         return $this->getServiceFindUser()->getOne($entity->getId());
     }

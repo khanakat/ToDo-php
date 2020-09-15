@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\Task;
+use App\Exception\TaskException;
+use App\Entity\Task;
 
 final class TaskRepository extends BaseRepository
 {
-    public function checkAndGetTask(int $taskId, int $userId): \App\Entity\Task
+    public function checkAndGetTask(int $taskId, int $userId): Task
     {
         $query = '
             SELECT * FROM `tasks` 
@@ -18,9 +19,9 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);
         $statement->execute();
-        $task = $statement->fetchObject(\App\Entity\Task::class);
+        $task = $statement->fetchObject(Task::class);
         if (!$task) {
-            throw new Task('Tarea no encontrada.', 404);
+            throw new TaskException('Tarea no encontrada.', 404);
         }
 
         return $task;
@@ -87,13 +88,13 @@ final class TaskRepository extends BaseRepository
         $tasks = (array) $statement->fetchAll();
         if (!$tasks) {
             $message = 'No se encontraron tareas con ese nombre.';
-            throw new Task($message, 404);
+            throw new TaskException($message, 404);
         }
 
         return $tasks;
     }
 
-    public function createTask(\App\Entity\Task $task): \App\Entity\Task
+    public function createTask(Task $task): Task
     {
         $query = '
             INSERT INTO `tasks`
@@ -119,7 +120,7 @@ final class TaskRepository extends BaseRepository
         return $this->checkAndGetTask((int) $taskId, (int) $userId);
     }
 
-    public function updateTask(\App\Entity\Task $task): \App\Entity\Task
+    public function updateTask(Task $task): Task
     {
         $query = '
             UPDATE `tasks`

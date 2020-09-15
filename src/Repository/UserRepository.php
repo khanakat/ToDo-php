@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\User;
+use App\Exception\UserException;
+use App\Entity\User;
 
 final class UserRepository extends BaseRepository
 {
-    public function checkAndGetUser(int $userId): \App\Entity\User
+    public function checkAndGetUser(int $userId): User
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `id` = :id';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
-        $user = $statement->fetchObject(\App\Entity\User::class);
+        $user = $statement->fetchObject(User::class);
         if (!$user) {
-            throw new User('Usuario no encontrado.', 404);
+            throw new UserException('Usuario no encontrado.', 404);
         }
 
         return $user;
@@ -30,7 +31,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject();
         if ($user) {
-            throw new User('El Email ya existe.', 400);
+            throw new UserException('El Email ya existe.', 400);
         }
     }
 
@@ -57,13 +58,13 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            throw new User('Usuario no encontrado.', 404);
+            throw new UserException('Usuario no encontrado.', 404);
         }
 
         return $users;
     }
 
-    public function createUser(\App\Entity\User $user): \App\Entity\User
+    public function createUser(User $user): User
     {
         $query = '
             INSERT INTO `users`
@@ -85,7 +86,7 @@ final class UserRepository extends BaseRepository
         return $this->checkAndGetUser((int) $this->getDb()->lastInsertId());
     }
 
-    public function updateUser(\App\Entity\User $user): \App\Entity\User
+    public function updateUser(User $user): User
     {
         $query = '
             UPDATE `users` 
@@ -128,7 +129,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
     }
 
-    public function loginUser(string $email, string $password): \App\Entity\User
+    public function loginUser(string $email, string $password): User
     {
         $query = '
             SELECT *
@@ -140,9 +141,9 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('email', $email);
         $statement->bindParam('password', $password);
         $statement->execute();
-        $user = $statement->fetchObject(\App\Entity\User::class);
+        $user = $statement->fetchObject(User::class);
         if (!$user) {
-            throw new User('Error de inicio de sesión: correo electrónico o contraseña incorrecta.', 400);
+            throw new UserException('Error de inicio de sesión: correo electrónico o contraseña incorrecta.', 400);
         }
 
         return $user;

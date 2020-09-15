@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Service\Task;
 
 use App\Service\BaseService;
-use App\Exception\Task;
+use App\Exception\TaskException;
 use App\Repository\TaskRepository;
+use App\Entity\Task;
 use Respect\Validation\Validator as v;
 
 abstract class Base extends BaseService
@@ -22,7 +23,7 @@ abstract class Base extends BaseService
     protected static function validateTaskName(string $name): string
     {
         if (!v::length(1, 100)->validate($name)) {
-            throw new Task('Nombre de Tarea inválido.', 400);
+            throw new TaskException('Nombre de Tarea inválido.', 400);
         }
 
         return $name;
@@ -31,13 +32,13 @@ abstract class Base extends BaseService
     protected static function validateTaskStatus(int $status): int
     {
         if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new Task('Estado de Tarea inválido', 400);
+            throw new TaskException('Estado de Tarea inválido', 400);
         }
 
         return $status;
     }
 
-    protected function getTaskFromDb(int $taskId, int $userId): \App\Entity\Task
+    protected function getTaskFromDb(int $taskId, int $userId): Task
     {
         return $this->taskRepository->checkAndGetTask($taskId, $userId);
     }

@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace App\Service\Task;
 
-use App\Exception\Task;
+use App\Exception\TaskException;
+use App\Entity\Task;
 
 final class Update extends Base
 {
-    public function update(\App\Entity\Task $entity, int $taskId): \App\Entity\Task
+    public function update(Task $entity, int $taskId): Task
     {
         $task = $this->getTaskFromDb($taskId, (int) $entity->getUserId());
         if (empty($entity->getName()) && empty($entity->getStatus())) {
-            throw new Task('Ingrese los datos para actualizar la tarea.', 400);
+            throw new TaskException('Ingrese los datos para actualizar la tarea.', 400);
         }
         if (!empty($entity->getName())) {
             $task->updateName(self::validateTaskName($entity->getName()));

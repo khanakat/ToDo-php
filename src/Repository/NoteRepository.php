@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\Note;
+use App\Exception\NoteException;
+use App\Entity\Note;
 
 final class NoteRepository extends BaseRepository
 {
-    public function checkAndGetNote(int $noteId): \App\Entity\Note
+    public function checkAndGetNote(int $noteId): Note
     {
         $query = 'SELECT * FROM `notes` WHERE `id` = :id';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $noteId);
         $statement->execute();
-        $note = $statement->fetchObject(\App\Entity\Note::class);
+        $note = $statement->fetchObject(Note::class);
         if (!$note) {
-            throw new Note('Nota no encontrada.', 404);
+            throw new NoteException('Nota no encontrada.', 404);
         }
 
         return $note;
@@ -29,17 +30,6 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
 
         return $statement->fetchAll();
-    }
-
-    public function getQueryNotesByPage(): string
-    {
-        return "
-            SELECT *
-            FROM `notes`
-            WHERE `name` LIKE CONCAT('%', :name, '%')
-            AND `description` LIKE CONCAT('%', :description, '%')
-            ORDER BY `id`
-        ";
     }
 
     public function searchNotes(string $strNotes): array
@@ -65,7 +55,7 @@ final class NoteRepository extends BaseRepository
         return $notes;
     }
 
-    public function createNote(\App\Entity\Note $note): \App\Entity\Note
+    public function createNote(Note $note): Note
     {
         $query = '
             INSERT INTO `notes`
@@ -85,7 +75,7 @@ final class NoteRepository extends BaseRepository
         return $this->checkAndGetNote((int) $this->getDb()->lastInsertId());
     }
 
-    public function updateNote(\App\Entity\Note $note): \App\Entity\Note
+    public function updateNote(Note $note): Note
     {
         $query = '
             UPDATE `notes`

@@ -6,7 +6,7 @@ namespace App\Service\User;
 
 use App\Service\BaseService;
 use App\Repository\UserRepository;
-use App\Exception\User;
+use App\Exception\UserException;
 use Respect\Validation\Validator as v;
 
 abstract class Base extends BaseService
@@ -22,7 +22,7 @@ abstract class Base extends BaseService
     protected static function validateUserName(string $name): string
     {
         if (!v::alnum('ÁÉÍÓÚÑáéíóúñ.')->length(1, 100)->validate($name)) {
-            throw new User('Nombre de usuario inválido.', 400);
+            throw new UserException('Nombre de usuario inválido.', 400);
         }
 
         return $name;
@@ -32,7 +32,7 @@ abstract class Base extends BaseService
     {
         $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
         if (!v::email()->validate($email)) {
-            throw new User('Correo inválido.', 400);
+            throw new UserException('Correo inválido.', 400);
         }
 
         return (string) $email;

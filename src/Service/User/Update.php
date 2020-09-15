@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Service\User;
 
-use App\Exception\User;
+use App\Exception\UserException;
+use App\Entity\User;
 
 final class Update extends Base
 {
-    public function update(\App\Entity\User $entity): \App\Entity\User
+    public function update(User $entity): User
     {
         if (empty($entity->getName()) && empty($entity->getEmail())) {
-            throw new User('Enter the data to update the user.', 400);
+            throw new UserException('Enter the data to update the user.', 400);
         }
         if (!empty($entity->getName())) {
             $entity->updateName(self::validateUserName($entity->getName()));

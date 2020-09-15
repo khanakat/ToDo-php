@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Exception\Note;
+use App\Exception\NoteException;
+use App\Entity\Note;
 
 final class Create extends Base
 {
-    public function create(\App\Entity\Note $entity): \App\Entity\Note
+    public function create(Note $entity): Note
     {
         if (empty($entity->getName())) {
-            throw new Note('Datos inválidos: el nombre es obligatorio.', 400);
+            throw new NoteException('Datos inválidos: el nombre es obligatorio.', 400);
         }
-        $entity = new \App\Entity\Note();
         $entity->updateName(self::validateNoteName($entity->getName()));
         $desc = !empty($entity->getDescription()) ? $entity->getDescription() : null;
         $entity->updateDescription($desc);

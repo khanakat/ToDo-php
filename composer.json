@@ -22,7 +22,7 @@
     },
     "scripts": {
         "database": "php extras/bin/database.php",
-        "start": "php -S localhost:8080 -t public public/index.phtml"        
+        "start": "php -S localhost:8080 -t public public/index.php"        
     },
     "require": {
         "vlucas/phpdotenv": "^5.2",

@@ -28,6 +28,13 @@ composer database
 composer start
 ```
 
+## Test Login
+
+```note
+email: test@user.com
+password: AnyPass1000
+```
+
 ## :page_facing_up: LICENCIA
 
 Licencia MIT. Puedes verla en el [Archivo de Licencia](LICENSE.md) para más información.

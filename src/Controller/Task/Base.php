@@ -4,27 +4,32 @@ declare(strict_types=1);
 
 namespace App\Controller\Task;
 
+use App\Service\Task\Find;
+use App\Service\Task\Create;
+use App\Service\Task\Update;
+use App\Service\Task\Delete;
+
 use App\Controller\BaseController;
 
 abstract class Base extends BaseController
 {
-    protected function getServiceFindTask(): \App\Service\Task\Find
+    protected function getServiceFindTask(): Find
     {
-        return new \App\Service\Task\Find($this->_taskRepository);
+        return new Find($this->_taskRepository);
     }
 
-    protected function getServiceCreateTask(): \App\Service\Task\Create
+    protected function getServiceCreateTask(): Create
     {
-        return new \App\Service\Task\Create($this->_taskRepository);
+        return new Create($this->_taskRepository);
     }
 
-    protected function getServiceUpdateTask(): \App\Service\Task\Update
+    protected function getServiceUpdateTask(): Update
     {
-        return new \App\Service\Task\Update($this->_taskRepository);
+        return new Update($this->_taskRepository);
     }
 
-    protected function getServiceDeleteTask(): \App\Service\Task\Delete
+    protected function getServiceDeleteTask(): Delete
     {
-        return new \App\Service\Task\Delete($this->_taskRepository);
+        return new Delete($this->_taskRepository);
     }
 }

@@ -2,13 +2,13 @@ Options +FollowSymLinks -MultiViews
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^page_404$ partials/error/page404.phtml [L,NC]
-RewriteRule ^page_500$ partials/error/page500.phtml [L,NC]
+DirectoryIndex index.php
+RewriteRule ^page_404$ partials/error/page404.php [L,NC]
+RewriteRule ^page_500$ partials/error/page500.php [L,NC]
 ErrorDocument 404 /page_404
 ErrorDocument 500 /page_500
-DirectoryIndex index.phtml
-# RewriteRule ^ index.phtml [QSA,L]
-RewriteRule ^notas$ notes.phtml [L,NC]
-RewriteRule ^tareas$ tasks.phtml [L,NC]
-RewriteRule ^usuarios$ users.phtml [L,NC]
-RewriteRule ^perfil$ profile.phtml [L,NC]
+RewriteRule ^notas$ notes.php [L,NC]
+RewriteRule ^tareas$ tasks.php [L,NC]
+RewriteRule ^usuarios$ users.php [L,NC]
+RewriteRule ^perfil$ profile.php [L,NC]
+RewriteRule ^logout$ logout.php [L,NC]

@@ -8,11 +8,6 @@ require __DIR__ . '/../src/App/App.php';
     header("Location: /perfil");
 } */
 
-if (isset($_GET['logout'])) {
-    new \App\Controller\User\Logout();
-    header("Location: /");
-}
-
 if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
     if (!empty($_POST['login_email']) && !empty($_POST['login_password'])) {
         try {
@@ -31,11 +26,11 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
 }
 ?>
 
-<?php require_once __DIR__ . '/partials/head.phtml'; ?>
+<?php require_once __DIR__ . '/partials/head.php'; ?>
 
 <body>
     <div>
-        <?php require_once __DIR__ . '/partials/nav.phtml'; ?>
+        <?php require_once __DIR__ . '/partials/nav.php'; ?>
     </div>
 
     <h1>Inicio</h1>
@@ -51,7 +46,7 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
     </div>
 
     <div>
-        <?php require_once __DIR__ . '/partials/footer.phtml'; ?>
+        <?php require_once __DIR__ . '/partials/footer.php'; ?>
     </div>
 </body>
 

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Service\Task;
 
-use App\Exception\Task;
+use App\Exception\TaskException;
+use App\Entity\Task;
 
 final class Create extends Base
 {
-    public function create(\App\Entity\Task $entity): \App\Entity\Task
+    public function create(Task $entity): Task
     {
         if (empty($entity->getName())) {
-            throw new Task('El campo "nombre" es obligatorio.', 400);
+            throw new TaskException('El campo "nombre" es obligatorio.', 400);
         }
         $entity->updateName(self::validateTaskName($entity->getName()));
         $desc = !empty($entity->getDescription()) ? $entity->getDescription() : null;
