@@ -8,6 +8,11 @@ require __DIR__ . '/../src/App/App.php';
     header("Location: /perfil");
 } */
 
+if (isset($_GET['logout'])) {
+    new \App\Controller\User\Logout();
+    header("Location: /");
+}
+
 if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
     if (!empty($_POST['login_email']) && !empty($_POST['login_password'])) {
         try {
@@ -15,6 +20,7 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
             $user->updateEmail($_POST['login_email']);
             $user->updatePassword($_POST['login_password']);
             $logged = new \App\Controller\User\Login($user);
+            $_SESSION['user'] = $logged;
             var_dump($logged);
         } catch (Exception $ex) {
             echo '<script language="javascript">alert("ERROR: ' . $ex->getMessage() . '")</script>';

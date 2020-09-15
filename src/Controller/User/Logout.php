@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller\User;
 
-final class Logout extends Base
+final class Logout
 {
-    public function __invoke(\App\Entity\User $entity): \App\Entity\User
+    public function __invoke(): void
     {
         if (!isset($_SESSION)) {
             session_start();
@@ -26,9 +26,6 @@ final class Logout extends Base
             );
         }
         unset($_SESSION['user']);
-        unset($entity);
         session_destroy();
-
-        return $entity;
     }
 }

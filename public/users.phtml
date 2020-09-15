@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../src/App/App.php';
 
-if (!isset($_SESSION['user'])) {
+if (isset($_GET['logout'])) {
+    new \App\Controller\User\Logout();
     header("Location: /");
 }
 ?>

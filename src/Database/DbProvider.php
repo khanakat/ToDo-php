@@ -14,7 +14,7 @@ class DbProvider
     {
         if (!self::$_db) {
             $db = __CONFIG__['db'];
-            $dsn = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
+            $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', $db['hostname'], $db['database']);
             $pdo = new PDO($dsn, $db['username'], $db['password']);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
