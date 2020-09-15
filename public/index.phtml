@@ -5,17 +5,28 @@ declare(strict_types=1);
 require __DIR__ . '/../src/App/App.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - ToDo PHP</title>
-</head>
+<?php require_once __DIR__ . '/partials/head.php'; ?>
 
 <body>
+    <div>
+        <?php require_once __DIR__ . '/partials/nav.php'; ?>
+    </div>
+
     <h1>Inicio</h1>
+    <p>Applicación para administrar tareas de usuarios.</p>
+
+    <div>
+        <h2>Login</h2>
+        <form method="POST" action="/">
+            <div>Correo: <input type="text" name="txtEmail"></div>
+            <div>Contraseña: <input type="password" name="txtPassword"></div>
+            <div><button type="submit">Iniciar Sesión</button></div>
+        </form>
+    </div>
+
+    <div>
+        <?php require_once __DIR__ . '/partials/nav.php'; ?>
+    </div>
 </body>
 
 </html>

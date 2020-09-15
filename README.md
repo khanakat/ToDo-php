@@ -9,9 +9,10 @@ Aplicación simple para administrar `usuarios, tareas y notas` con operaciones C
 - PHP 7.3+.
 - MySQL/MariaDB.
 
-## Instalar dependencias
+## Instalación
 
 ```bash
+cp .env.example .env
 composer install
 ```
 
