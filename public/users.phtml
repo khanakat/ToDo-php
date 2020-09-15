@@ -3,19 +3,23 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../src/App/App.php';
+
+if (!isset($_SESSION['user'])) {
+    header("Location: /");
+}
 ?>
 
-<?php require_once __DIR__ . '/partials/head.php'; ?>
+<?php require_once __DIR__ . '/partials/head.phtml'; ?>
 
 <body>
     <div>
-        <?php require_once __DIR__ . '/partials/nav.php'; ?>
+        <?php require_once __DIR__ . '/partials/nav.phtml'; ?>
     </div>
 
     <h1>Usuarios</h1>
 
     <div>
-        <?php require_once __DIR__ . '/partials/nav.php'; ?>
+        <?php require_once __DIR__ . '/partials/footer.phtml'; ?>
     </div>
 </body>
 
