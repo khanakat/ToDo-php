@@ -14,9 +14,9 @@ abstract class Base extends BaseService
     /** @var UserRepository */
     protected $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct()
     {
-        $this->userRepository = $userRepository;
+        $this->userRepository = new UserRepository();
     }
 
     protected static function validateUserName(string $name): string

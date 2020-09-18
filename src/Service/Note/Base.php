@@ -14,9 +14,9 @@ abstract class Base extends BaseService
     /** @var NoteRepository */
     protected $noteRepository;
 
-    public function __construct(NoteRepository $noteRepository)
+    public function __construct()
     {
-        $this->noteRepository = $noteRepository;
+        $this->noteRepository = new NoteRepository();
     }
 
     protected static function validateNoteName(string $name): string

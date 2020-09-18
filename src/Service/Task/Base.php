@@ -15,9 +15,9 @@ abstract class Base extends BaseService
     /** @var TaskRepository */
     protected $taskRepository;
 
-    public function __construct(TaskRepository $taskRepository)
+    public function __construct()
     {
-        $this->taskRepository = $taskRepository;
+        $this->taskRepository = new TaskRepository();
     }
 
     protected static function validateTaskName(string $name): string

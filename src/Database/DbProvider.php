@@ -11,8 +11,8 @@ class DbProvider
     public static function get(): PDO
     {
         try {
-            $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', __CONFIG__['db']['hostname'], __CONFIG__['db']['database']);
-            $pdo = new PDO($dsn, __CONFIG__['db']['username'], __CONFIG__['db']['password']);
+            $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', CONFIG['db']['hostname'], CONFIG['db']['database']);
+            $pdo = new PDO($dsn, CONFIG['db']['username'], CONFIG['db']['password']);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             return $pdo;

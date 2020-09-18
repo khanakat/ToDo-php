@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-define('__CONFIG__', [
+define('CONFIG', [
     'db' => [
         'hostname' => $_SERVER['DB_HOSTNAME'],
         'database' => $_SERVER['DB_DATABASE'],
