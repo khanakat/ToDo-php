@@ -22,12 +22,6 @@ composer install
 composer database
 ```
 
-## Iniciar programa en localhost con puerto 8080
-
-```bash
-composer start
-```
-
 ## Test Login
 
 ```note

@@ -23,26 +23,29 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
 
 <?php require_once __DIR__ . '/partials/head.php'; ?>
 
-<body>
-    <div>
+<body class="darkmode">
+    <header>
         <?php require_once __DIR__ . '/partials/nav.php'; ?>
-    </div>
+    </header>
 
-    <h1>Inicio</h1>
-    <p>Applicación para administrar tareas de usuarios.</p>
+    <main>
+        <section>
+            <h1>Inicio</h1>
+            <p>Applicación para administrar tareas de usuarios.</p>
+        </section>
 
-    <div>
-        <h2>Login</h2>
-        <form method="POST" action="/">
-            <div>Correo: <input type="text" name="login_email"></div>
-            <div>Contraseña: <input type="password" name="login_password"></div>
-            <div><button type="submit">Iniciar Sesión</button></div>
-        </form>
-    </div>
+        <section>
+            <h2>Login</h2>
+            <form method="POST" action="/">
+                <div>Correo: <input type="text" name="login_email"></div>
+                <div>Contraseña: <input type="password" name="login_password"></div>
+                <div><button type="submit">Iniciar Sesión</button></div>
+            </form>
+        </section>
+    </main>
 
-    <div>
-        <?php require_once __DIR__ . '/partials/footer.php'; ?>
-    </div>
+    <?php require_once __DIR__ . '/partials/footer.php'; ?>
+
 </body>
 
 </html>
