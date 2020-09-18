@@ -23,7 +23,7 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
 
 <?php require_once __DIR__ . '/partials/head.php'; ?>
 
-<body class="darkmode">
+<body>
     <header>
         <?php require_once __DIR__ . '/partials/nav.php'; ?>
     </header>

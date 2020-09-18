@@ -1,16 +1,17 @@
+Options +FollowSymLinks -MultiViews
 RewriteEngine On
-# The following rule tells Apache that if the requested filename
-# exists, simply serve it.
-RewriteCond %{REQUEST_FILENAME} -s [OR]
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^.*$ - [L]
-# The following rewrites all other queries to index.php. The
-# condition ensures that if you are using Apache aliases to do
-# mass virtual hosting or installed the project in a subdirectory,
-# the base path will be prepended to allow proper resolution of
-# the index.php file; it will work in non-aliased environments
-# as well, providing a safe, one-size fits all solution.
-RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
-RewriteRule ^(.*) - [E=BASE:%1]
-RewriteRule ^(.*)$ %{ENV:BASE}/index.php [L]
+RewriteBase /
+#RewriteCond %{HTTPS} !=on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+DirectoryIndex index.php
+RewriteRule ^page_404$ partials/error/page404.php [L,NC]
+RewriteRule ^page_500$ partials/error/page500.php [L,NC]
+ErrorDocument 404 /page_404
+ErrorDocument 500 /page_500
+RewriteRule ^profile$ perfil.php [L,NC]
+RewriteRule ^logout$ logout.php [L,NC]
+RewriteRule ^usuarios$ users.php [L,NC]
+RewriteRule ^notas$ notes.php [L,NC]
+RewriteRule ^tareas$ tasks.php [L,NC]

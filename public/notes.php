@@ -5,8 +5,8 @@ declare(strict_types=1);
 require __DIR__ . '/../src/App/App.php';
 
 try {
-    $rows = new \App\Service\Note\Find();
-    $rows = $rows->getAll();
+    $notes = new \App\Service\Note\Find();
+    $rows = $notes->getAll();
 } catch (Exception $ex) {
     echo '<script language="javascript">alert("ERROR: ' . $ex->getMessage() . '")</script>';
 }
@@ -15,7 +15,7 @@ try {
 
 <?php require_once __DIR__ . '/partials/head.php'; ?>
 
-<body class="darkmode">
+<body>
     <header>
         <?php require_once __DIR__ . '/partials/nav.php'; ?>
     </header>
@@ -36,11 +36,11 @@ try {
                 <tbody>
                     <?php foreach ($rows as $row) { ?>
                         <tr>
-                            <th scope="row"><?php echo $row['id']; ?></th>
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['description']; ?></td>
-                            <td><?php echo $row['createdAt']; ?></td>
-                            <td><?php echo $row['updatedAt']; ?></td>
+                            <th scope="row"><?php echo $row->id ?></th>
+                            <td><?php echo $row->name ?></td>
+                            <td><?php echo $row->description ?></td>
+                            <td><?php echo $row->createdAt ?></td>
+                            <td><?php echo $row->updatedAt ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>

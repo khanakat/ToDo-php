@@ -7,7 +7,7 @@ body {
 }
 
 header {
-  background-color: rgb(255, 195, 228);
+  background-color: rgb(16, 130, 212);
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -72,13 +72,47 @@ main img {
   height: auto;
 }
 
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* DARKMODE STYLE */
+
 body.darkmode {
-  background-color: rgb(32, 32, 44);
+  background-color: rgb(31, 36, 40);
   color: white;
 }
 
 .darkmode header {
-  background-color: rgb(12, 12, 12);
+  background-color: rgb(36, 41, 46);
   color: white;
 }
 
@@ -98,4 +132,19 @@ body.darkmode {
 .darkmode main blockquote {
   border-left-color: #333;
   background-color: #222;
+}
+
+.darkmode table {
+  border: 1px solid #24292e;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.darkmode table tr {
+  background-color: #1f2428;
+  border: 1px solid #24292e;
+  padding: 0.35em;
 }
