@@ -1,7 +1,7 @@
+<div class="btnTheme">
+    <button id="bdark">Cambiar Modo</button>
+</div>
 <nav>
-    <div>
-        <button id="bdark">Cambiar Modo</button>
-    </div>
     <?php if (isset($_SESSION['user'])) { ?>
         <ul>
             <li><a href="/">Inicio</a></li>

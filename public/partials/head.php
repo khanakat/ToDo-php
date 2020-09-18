@@ -9,4 +9,5 @@
     <meta name="author" content="Khanakat Team">
     <title>ToDo App</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
 </head>

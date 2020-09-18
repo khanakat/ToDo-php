@@ -6,6 +6,10 @@ body {
   margin: 0;
 }
 
+a {
+  color: #4AE95B;
+}
+
 header {
   background-color: rgb(16, 130, 212);
   padding: 10px;
@@ -27,7 +31,8 @@ header button {
   font-size: 1em;
   padding: 10px;
   border: none;
-  background: transparent;
+  background: #106ebe;
+  color: white;
 }
 
 header button:hover {
@@ -102,6 +107,43 @@ table th {
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #0078d4;
+  padding-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #106ebe;
+}
+
+.btnTheme {
+  align-items: right;
 }
 
 /* DARKMODE STYLE */
