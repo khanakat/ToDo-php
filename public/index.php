@@ -11,7 +11,7 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
             $user->email = $_POST['login_email'];
             $user->password = $_POST['login_password'];
             $logged = new \App\Service\User\Login($user);
-            var_dump($logged);
+            var_dump($logged); //test retrieve
         } catch (Exception $ex) {
             echo '<script language="javascript">alert("ERROR: ' . $ex->getMessage() . '")</script>';
         }
