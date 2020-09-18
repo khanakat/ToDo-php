@@ -14,7 +14,6 @@
     <?php } else { ?>
         <ul>
             <li><a href="/">Inicio</a></li>
-            <li><a href="/notas">Notas</a></li>
         </ul>
     <?php } ?>
 </nav>
