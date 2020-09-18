@@ -29,17 +29,16 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
     </header>
 
     <main>
-        <section>
-            <h1>Inicio</h1>
-            <p>Applicación para administrar tareas de usuarios.</p>
-        </section>
-
-        <section>
-            <h2>Login</h2>
+        <section class="login">
             <form method="POST" action="/">
-                <div>Correo: <input type="text" name="login_email"></div>
-                <div>Contraseña: <input type="password" name="login_password"></div>
-                <div><button type="submit">Iniciar Sesión</button></div>
+                <div class="box">
+                    <h1>Iniciar Sesión</h1>
+                    <span>Correo</span>
+                    <input type="email" name="login_email" class="email" />
+                    <span>Contraseña</span>
+                    <input type="password" name="login_password" class="password" />
+                    <button class="button" style="vertical-align:middle" type="submit">Entrar</button>
+                </div>
             </form>
         </section>
     </main>

@@ -5,11 +5,9 @@ body {
   padding: 0;
   margin: 0;
 }
-
 a {
-  color: #4AE95B;
+  color: #4ae95b;
 }
-
 header {
   background-color: rgb(16, 130, 212);
   padding: 10px;
@@ -17,14 +15,12 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
 header a {
   font-weight: bolder;
   text-decoration: none;
   color: black;
   font-size: 2em;
 }
-
 header button {
   border-radius: 5px;
   cursor: pointer;
@@ -34,49 +30,43 @@ header button {
   background: #106ebe;
   color: white;
 }
-
 header button:hover {
   background-color: black;
   color: white;
 }
-
 main {
   width: 80%;
   margin: 0 auto;
 }
-
 main h1 {
-  font-size: 4em;
+  font-size: 3em;
 }
-
 main .portada {
   width: 100%;
 }
-
 main .datos {
   padding-bottom: 30px;
 }
-
 main p {
   font-size: 2.5em;
 }
-
 main a {
   color: rgb(243 104, 24);
 }
-
 main blockquote {
   font-size: 2em;
   border-left: solid 15px greenyellow;
   background-color: yellowgreen;
   padding: 20px;
 }
-
 main img {
   width: 100%;
   height: auto;
 }
-
+.btnTheme {
+  align-items: right;
+}
+/* TABLE */
 table {
   border: 1px solid #ccc;
   border-collapse: collapse;
@@ -85,30 +75,26 @@ table {
   width: 100%;
   table-layout: fixed;
 }
-
 table caption {
   font-size: 1.5em;
   margin: 0.5em 0 0.75em;
 }
-
 table tr {
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 0.35em;
 }
-
 table th,
 table td {
   padding: 0.625em;
   text-align: center;
 }
-
 table th {
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-
+/* FOOTER */
 footer {
   position: fixed;
   left: 0;
@@ -116,20 +102,19 @@ footer {
   width: 100%;
   text-align: center;
   background-color: #0078d4;
-  padding-bottom: 10px;
+  color: white;
+  padding-top: 10px;
 }
-
+/* NAV */
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
-
 li {
   float: left;
 }
-
 li a {
   display: block;
   color: white;
@@ -137,45 +122,77 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 li a:hover {
   background-color: #106ebe;
 }
-
-.btnTheme {
-  align-items: right;
+/* FORM */
+.box {
+  background: transparent;
+  width: 400px;
+  border-radius: 6px;
+  margin: 0 auto 0 auto;
+  padding: 0px 0px 0px 0px;
+}
+.email {
+  background: #ecf0f1;
+  border: #ccc 1px solid;
+  border-bottom: #ccc 2px solid;
+  padding: 10px;
+  width: 100%;
+  color: #aaaaaa;
+  margin-top: 10px;
+  font-size: 1em;
+  border-radius: 4px;
+}
+.password {
+  background: #ecf0f1;
+  border: #ccc 1px solid;
+  border-bottom: #ccc 2px solid;
+  padding: 10px;
+  width: 100%;
+  color: #aaaaaa;
+  margin-top: 10px;
+  font-size: 1em;
+  border-radius: 4px;
+}
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #0078d4;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  margin: 10px;
+  width: 100%;
+  transition: all 0.5s;
+  cursor: pointer;
 }
 
 /* DARKMODE STYLE */
-
 body.darkmode {
   background-color: rgb(31, 36, 40);
   color: white;
 }
-
 .darkmode header {
   background-color: rgb(36, 41, 46);
   color: white;
 }
-
 .darkmode header a {
   color: white;
 }
-
 .darkmode button {
   color: white;
 }
-
 .darkmode button:hover {
   background-color: white;
   color: black;
 }
-
 .darkmode main blockquote {
   border-left-color: #333;
   background-color: #222;
 }
-
 .darkmode table {
   border: 1px solid #24292e;
   border-collapse: collapse;
@@ -184,7 +201,6 @@ body.darkmode {
   width: 100%;
   table-layout: fixed;
 }
-
 .darkmode table tr {
   background-color: #1f2428;
   border: 1px solid #24292e;
