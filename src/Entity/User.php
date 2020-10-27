@@ -6,7 +6,7 @@ namespace App\Entity;
 
 final class User
 {
-    /** @var int $id */
+    /** @var string $id */
     private $id;
 
     /** @var string $name */
@@ -24,7 +24,7 @@ final class User
     /** @var string|null $updatedAt */
     private $updatedAt;
 
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }

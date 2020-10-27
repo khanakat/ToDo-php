@@ -9,7 +9,7 @@ use App\Entity\User;
 
 final class Login extends Base
 {
-    public function login(object $entity): User
+    public function login(object $entity): object
     {
         if (empty($entity->email)) {
             throw new UserException('El campo "correo electrónico" es obligatorio.', 400);
