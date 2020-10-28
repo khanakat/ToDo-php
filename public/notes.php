@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../src/App/App.php';
 
+if (isset($_SESSION['userToken'])) {
+    $user = $_SESSION['userToken'];
+}
+
 try {
     $notes = new \App\Service\Note\Find();
     $rows = $notes->getAll();

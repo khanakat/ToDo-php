@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 require __DIR__ . '/../src/App/App.php';
 
+if (isset($_SESSION['userToken'])) {
+    header('Location: /perfil');
+    exit();
+}
+
 if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
     if (!empty($_POST['login_email']) && !empty($_POST['login_password'])) {
         try {
@@ -11,7 +16,12 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
             $user->email = $_POST['login_email'];
             $user->password = $_POST['login_password'];
             $loginRequest = new \App\Service\User\Login();
-            var_dump($loginRequest->login($user)); //test retrieve
+            $logged = $loginRequest->login($user);
+            if ($logged != null) {
+                $_SESSION['userToken'] = $logged;
+                header('Location: /perfil');
+                exit();
+            }
         } catch (Exception $ex) {
             echo '<script language="javascript">alert("ERROR: ' . $ex->getMessage() . '")</script>';
         }

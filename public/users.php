@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 require __DIR__ . '/../src/App/App.php';
 
+if (!isset($_SESSION['userToken'])) {
+    header('Location: /');
+    exit();
+} else {
+    $user = $_SESSION['userToken'];
+}
+
 try {
     $users = new \App\Service\User\Find();
     $rows = $users->getAll();

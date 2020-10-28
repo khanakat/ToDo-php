@@ -18,7 +18,7 @@ if (ini_get("session.use_cookies")) {
         $params["httponly"]
     );
 }
-unset($_SESSION['user']);
+unset($_SESSION['userToken']);
 session_destroy();
 header('Location: /');
 die();
