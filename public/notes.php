@@ -6,6 +6,8 @@ require __DIR__ . '/../src/App/App.php';
 
 if (isset($_SESSION['userToken'])) {
     $user = $_SESSION['userToken'];
+} else {
+    $user = null;
 }
 
 try {

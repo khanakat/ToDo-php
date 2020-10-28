@@ -47,7 +47,7 @@ if (isset($_POST['login_email']) && isset($_POST['login_password'])) {
                     <input type="email" name="login_email" class="email" />
                     <span>Contraseña</span>
                     <input type="password" name="login_password" class="password" />
-                    <button class="button" style="vertical-align:middle" type="submit">Entrar</button>
+                    <button class="button btn-primary" type="submit">Entrar</button>
                 </div>
             </form>
         </section>

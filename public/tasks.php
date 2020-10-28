@@ -30,6 +30,7 @@ try {
     <main>
         <section>
             <h1>Tareas</h1>
+            <p><a class="btn btn-lg btn-success" href="#">Agregar</a></p>
             <table>
                 <thead>
                     <tr>
@@ -40,6 +41,8 @@ try {
                         <th scope="col">Nro. Usuario</th>
                         <th scope="col">Creado</th>
                         <th scope="col">Modificado</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +55,8 @@ try {
                             <td><?php echo $row->userId ?></td>
                             <td><?php echo $row->createdAt ?></td>
                             <td><?php echo $row->updatedAt ?></td>
+                            <td><button type="button" class="btn btn-primary">Editar</button></td>
+                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                         </tr>
                     <?php } ?>
                 </tbody>
