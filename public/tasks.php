@@ -7,7 +7,7 @@ require __DIR__ . '/../src/App/App.php';
 if (!isset($_SESSION['userToken'])) {
     header('Location: /');
     exit();
-} else{
+} else {
     $user = $_SESSION['userToken'];
 }
 
@@ -16,6 +16,21 @@ try {
     $rows = $tasks->getAll();
 } catch (Exception $ex) {
     echo '<script language="javascript">alert("ERROR: ' . $ex->getMessage() . '")</script>';
+}
+
+function createTask()
+{
+    return "Created Test OK";
+}
+
+function editTask()
+{
+    return "Edited Test OK";
+}
+
+function deleteTask()
+{
+    return "Deleted Test OK";
 }
 
 ?>
@@ -30,7 +45,7 @@ try {
     <main>
         <section>
             <h1>Tareas</h1>
-            <p><a class="btn btn-lg btn-success" href="#">Agregar</a></p>
+            <p><button type="button" class="btn btn-lg btn-success" onclick="createTaskEvent()">Agregar</button></p>
             <table>
                 <thead>
                     <tr>
@@ -41,8 +56,8 @@ try {
                         <th scope="col">Nro. Usuario</th>
                         <th scope="col">Creado</th>
                         <th scope="col">Modificado</th>
-                        <th></th>
-                        <th></th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col">&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,8 +70,8 @@ try {
                             <td><?php echo $row->userId ?></td>
                             <td><?php echo $row->createdAt ?></td>
                             <td><?php echo $row->updatedAt ?></td>
-                            <td><button type="button" class="btn btn-primary">Editar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                            <td><button type="button" class="btn btn-primary" onclick="editTaskEvent()">Editar</button></td>
+                            <td><button type="button" class="btn btn-danger" onclick="deleteTaskEvent()">Eliminar</button></td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -65,6 +80,29 @@ try {
     </main>
 
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
+
+    <script>
+        function createTaskEvent() {
+            var e = confirm('¿Estas seguro que quieres crear una tarea?');
+            if (e == true) {
+                document.write('<?php echo createTask(); ?>');
+            }
+        }
+
+        function editTaskEvent() {
+            var e = confirm('¿Estas seguro que quieres editar esta tarea?');
+            if (e == true) {
+                document.write('<?php echo editTask(); ?>');
+            }
+        }
+
+        function deleteTaskEvent() {
+            var e = confirm('¿Estas seguro que quieres eliminar esta tarea?');
+            if (e == true) {
+                document.write('<?php echo deleteTask(); ?>');
+            }
+        }
+    </script>
 </body>
 
 </html>
