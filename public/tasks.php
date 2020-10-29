@@ -70,8 +70,8 @@ function deleteTask()
                             <td><?php echo $row->userId ?></td>
                             <td><?php echo $row->createdAt ?></td>
                             <td><?php echo $row->updatedAt ?></td>
-                            <td><button type="button" class="btn btn-primary" onclick="editTaskEvent()">Editar</button></td>
-                            <td><button type="button" class="btn btn-danger" onclick="deleteTaskEvent()">Eliminar</button></td>
+                            <td><button type="button" class="btn btn-primary" onclick="editTaskEvent('<?= $row->id ?>')">Editar</button></td>
+                            <td><button type="button" class="btn btn-danger" onclick="deleteTaskEvent('<?= $row->id ?>')">Eliminar</button></td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -83,21 +83,21 @@ function deleteTask()
 
     <script>
         function createTaskEvent() {
-            var e = confirm('¿Estas seguro que quieres crear una tarea?');
+            var e = confirm('¿Estas seguro que quieres crear una tarea ?');
             if (e == true) {
                 document.write('<?php echo createTask(); ?>');
             }
         }
 
-        function editTaskEvent() {
-            var e = confirm('¿Estas seguro que quieres editar esta tarea?');
+        function editTaskEvent(taskId) {
+            var e = confirm('¿Estas seguro que quieres editar la tarea ' + taskId + '?');
             if (e == true) {
                 document.write('<?php echo editTask(); ?>');
             }
         }
 
-        function deleteTaskEvent() {
-            var e = confirm('¿Estas seguro que quieres eliminar esta tarea?');
+        function deleteTaskEvent(taskId) {
+            var e = confirm('¿Estas seguro que quieres eliminar esta tarea ' + taskId + '?');
             if (e == true) {
                 document.write('<?php echo deleteTask(); ?>');
             }
